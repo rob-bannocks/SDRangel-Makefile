@@ -1,5 +1,5 @@
 # SDRangel Makefile
-This Makefile is written to make the process of compiling SDRangel server simpler.  It is based on the instructions at https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux.  This is useful for compiling SDRangel server and platforms not supported by binary distrubutions such as 32 Bit architectures, e.g. older Raspberry PIs, older PCs and portables, or 64 bit portables with 32 bit operating systems.
+This Makefile is written to make the process of compiling SDRangel server simpler.  It is based on the instructions at https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux.  This is useful for compiling SDRangel server on distrubutions for which the server is not supplied with in packages and on platforms not supported by binary distrubutions such as 32 Bit architectures, e.g. older Raspberry PIs, older PCs and portables, or 64 bit machines with 32 bit operating systems.
 
 By default it will compile for the RTL-SDR USB stick both server and gui.  Other hardware is supported but these targets must be specified before all on the command line.  The focus is running this on Debian derivatives.
 ## Use
