@@ -17,6 +17,15 @@ Now change directory into build and run the make file:
     cd build
     make
 You will need make installed and a C and C++ compiler.  
+
+For install on PI Zero (not PI Zero 2) you will likely need to add additional swap space.  This can be done as the root user as follows: 
+   
+    fallocate -l 1G /swapfile2
+    chmod 600 /swapfile2
+    mkswap /swapfile2
+    swapon /swapfile2
+
+or as describer here: https://chargedwarrior.com/how-to-increase-memory-on-raspberry-pi-increase-swap-size/?utm_content=cmp-true.
 ## Make targets
 by defaul the `all` target will build with all the modules, but only for the RTL-SDR hardware.  This includes the SoapySDR for RTL-SDR.  Currently the following hardware also has additional make targets and work is on going to make the Makefile smoother to use. 
 
@@ -24,7 +33,8 @@ by defaul the `all` target will build with all the modules, but only for the RTL
 |--|--|--|
 |GUI|gui|Build only the GUI not the server|
 |Server|server|Only build the server|
-|all|all|build both server and GUI (the default)|
+|all|all|build both server and GUI (the default) for RTL-SDR hardware only|
+|all hardware|all-all|build both server and GUI (the default) for all hardware|
 |AirSpy|airspy||
 |Pluto SDR|PlutoSDR||
 |Blade RF (all versions)|BladeRF||
