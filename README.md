@@ -22,14 +22,14 @@ by defaul the `all` target will build with all the modules, but only for the RTL
 
 |Module/hardware|Makefile target |
 |--|--|
-|airspy||
-|PlutoSDR||
-|BladeRF||
-|HackRF||
-|LimeSDR||
-|AirspyHF||
-|Perseus||
-|USRP||
-|XTRX||
+|AirSpy|airspy|
+|Pluto SDR|PlutoSDR|
+|Blade RF (all versions)|BladeRF|
+|Hack RF|HackRF|
+|LimeSDR|LimeSDR|
+|Airspy HF|AirspyHF|
+|Perseus|Perseus|
+|USRP|USRP|
+|XTRX|XTRX|
 
 To add in specific hardware add the Makefile target from the above table and follow it with the all target.
