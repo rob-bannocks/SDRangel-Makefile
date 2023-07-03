@@ -35,4 +35,7 @@ by defaul the `all` target will build with all the modules, but only for the RTL
 |USRP|USRP||
 |XTRX|XTRX||
 
-To add in specific hardware add the Makefile target from the above table and follow it with the all target.
+To add in specific hardware add the Makefile target from the above table and follow it with the all target. E.g.:
+	make LimeSDR server
+
+At present the make file is a work in progress, it work on a PI Zero, but the compile takes over a day.  It is in testing on Ubuntu, but the Makefile canot overcome issues with the compilability of SDRangel on different platforms.
