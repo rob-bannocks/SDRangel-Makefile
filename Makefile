@@ -8,7 +8,7 @@ setup:
 	sudo mkdir -p /opt/build && sudo chown $(USER). /opt/build && sudo mkdir -p /opt/install && sudo chown $(USER). /opt/install && sudo apt-get install cmake 
 
 APT: aptdec
-	cd $(BUILDROOT)/aptdec && git checkout libaptdec && git submodule update --init --recursive && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/aptdec .. && make -j $(nproc) install &&  cd $(BUILDROOT) && rm -rf aptdec
+	cd $(BUILDROOT)/aptdec && git checkout libaptdec && git submodule update --init --recursive && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/aptdec .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf aptdec
 
 aptdec:
 	sudo apt-get install libsndfile-dev -y
@@ -23,7 +23,7 @@ cm256cc:
 	cd $(BUILDROOT) && git clone https://github.com/f4exb/cm256cc.git
 
 LibDAB: dab-cmdline
-	cd $(BUILDROOT) && cd dab-cmdline/library && git checkout msvc && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libdab .. && make -j $(nproc) install &&  cd $(BUILDROOT) && rm -rf dab-cmdline
+	cd $(BUILDROOT) && cd dab-cmdline/library && git checkout msvc && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libdab .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf dab-cmdline
 
 dab-cmdline:
 	cd $(BUILDROOT) && git clone https://github.com/srcejon/dab-cmdline
@@ -103,10 +103,10 @@ LimeSDR:
 	cd $(BUILDROOT) && git clone https://github.com/myriadrf/LimeSuite.git && cd LimeSuite && git reset --hard "v20.01.0" && mkdir builddir && cd builddir && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/LimeSuite .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf LimeSuite && rm -rf LimeSuite
 
 AirspyHF:
-	cd $(BUILDROOT) && git clone https://github.com/airspy/airspyhf && cd airspyhf && git reset --hard 1af81c0ca18944b8c9897c3c98dc0a991815b686 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libairspyhf .. && make -j $(nproc) install &&  cd $(BUILDROOT) && rm -rf airspyhf
+	cd $(BUILDROOT) && git clone https://github.com/airspy/airspyhf && cd airspyhf && git reset --hard 1af81c0ca18944b8c9897c3c98dc0a991815b686 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libairspyhf .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf airspyhf
 
 Perseus:
-	cd $(BUILDROOT) && git clone https://github.com/f4exb/libperseus-sdr.git && cd libperseus-sdr && git checkout fixes && git reset --hard afefa23e3140ac79d845acb68cf0beeb86d09028 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libperseus ..  && make -j $(nproc) && make install &&  cd $(BUILDROOT) && rm -rf libperseus-sdr
+	cd $(BUILDROOT) && git clone https://github.com/f4exb/libperseus-sdr.git && cd libperseus-sdr && git checkout fixes && git reset --hard afefa23e3140ac79d845acb68cf0beeb86d09028 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libperseus .. && make -j $(nproc) && make install && cd $(BUILDROOT) && rm -rf libperseus-sdr
 
 USRP:
 	sudo apt install libboost-all-dev libusb-1.0-0-dev python3-mako doxygen python3-docutils build-essential && cd $(BUILDROOT) && git clone https://github.com/EttusResearch/uhd.git && git reset --hard v4.3.0.0 && cd uhd/host && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/opt/install/uhd ../ && make -j $(nproc) && make install
