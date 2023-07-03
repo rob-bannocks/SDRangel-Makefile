@@ -21,6 +21,7 @@ You will need make installed and a C and C++ compiler.
 by defaul the `all` target will build with all the modules, but only for the RTL-SDR hardware.  This includes the SoapySDR for RTL-SDR.  Currently the following hardware also has additional make targets and work is on going to make the Makefile smoother to use. 
 
 |Module/hardware|Makefile target |
+|--|--|
 |airspy||
 |PlutoSDR||
 |BladeRF||
