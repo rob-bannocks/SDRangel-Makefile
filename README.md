@@ -1,7 +1,7 @@
 # SDRangel Makefile
 This Makefile is written to make the process of compiling SDRangel server simpler.  It is based on the instructions at https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux.  This is useful for compiling SDRangel server and platforms not supported by binary distrubutions such as 32 Bit architectures, e.g. older Raspberry PIs, older PCs and portables, or 64 bit portables with 32 bit operating systems.
 
-By default it will compile for the RTL-SDR USB stick.  Other hardware is supported but these targets must be specified before all on the command line.  The focus is running this on Debian derivatives.
+By default it will compile for the RTL-SDR USB stick both server and gui.  Other hardware is supported but these targets must be specified before all on the command line.  The focus is running this on Debian derivatives.
 ## Use
 To use the file clone the repro:
 
@@ -20,16 +20,19 @@ You will need make installed and a C and C++ compiler.
 ## Make targets
 by defaul the `all` target will build with all the modules, but only for the RTL-SDR hardware.  This includes the SoapySDR for RTL-SDR.  Currently the following hardware also has additional make targets and work is on going to make the Makefile smoother to use. 
 
-|Module/hardware|Makefile target |
-|--|--|
-|AirSpy|airspy|
-|Pluto SDR|PlutoSDR|
-|Blade RF (all versions)|BladeRF|
-|Hack RF|HackRF|
-|LimeSDR|LimeSDR|
-|Airspy HF|AirspyHF|
-|Perseus|Perseus|
-|USRP|USRP|
-|XTRX|XTRX|
+|Module/hardware|Makefile target|Comment|
+|--|--|--|
+|GUI|gui|Build only the GUI not the server|
+|Server|server|Only build the server|
+|all|all|build both server and GUI (the default)|
+|AirSpy|airspy||
+|Pluto SDR|PlutoSDR||
+|Blade RF (all versions)|BladeRF||
+|Hack RF|HackRF||
+|LimeSDR|LimeSDR||
+|Airspy HF|AirspyHF||
+|Perseus|Perseus||
+|USRP|USRP||
+|XTRX|XTRX||
 
 To add in specific hardware add the Makefile target from the above table and follow it with the all target.
