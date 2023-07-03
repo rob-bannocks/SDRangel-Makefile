@@ -49,7 +49,7 @@ codec2:
 	cd $(BUILDROOT) && git clone https://github.com/drowe67/codec2.git
 
 SGP4: sgp4
-	cd $(BUILDROOT) && cd sgp4 && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/sgp4 .. && make -j $(nproc) install &&  cd $(BUILDROOT) && rm -rf sgp4
+	cd $(BUILDROOT) && cd sgp4 && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/sgp4 .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf sgp4
 
 sgp4:
 	cd $(BUILDROOT) && git clone https://github.com/dnwrnr/sgp4.git
@@ -82,7 +82,7 @@ SoapyRTLSDR:
 	cd $(BUILDROOT) && git clone https://github.com/pothosware/SoapyRTLSDR.git
 
 airspy:
-	cd $(BUILDROOT) && git clone https://github.com/airspy/airspyone_host.git libairspy && cd libairspy && git reset --hard 37c768ce9997b32e7328eb48972a7fda0a1f8554 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libairspy .. && make -j $(nproc) install
+	cd $(BUILDROOT) && git clone https://github.com/airspy/airspyone_host.git libairspy && cd libairspy && git reset --hard 37c768ce9997b32e7328eb48972a7fda0a1f8554 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libairspy .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf libairspy
 
 SDRplay-RSP1:
 	cd $(BUILDROOT) && git clone https://github.com/f4exb/libmirisdr-4.git && cd libmirisdr-4 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libmirisdr .. && make -j $(nproc) install
@@ -103,7 +103,7 @@ LimeSDR:
 	cd $(BUILDROOT) && git clone https://github.com/myriadrf/LimeSuite.git && cd LimeSuite && git reset --hard "v20.01.0" && mkdir builddir && cd builddir && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/LimeSuite .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf LimeSuite && rm -rf LimeSuite
 
 AirspyHF:
-	cd $(BUILDROOT) && git clone https://github.com/airspy/airspyhf && cd airspyhf && git reset --hard 1af81c0ca18944b8c9897c3c98dc0a991815b686 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libairspyhf ..  && make -j $(nproc) install &&  cd $(BUILDROOT) && rm -rf airspyhf
+	cd $(BUILDROOT) && git clone https://github.com/airspy/airspyhf && cd airspyhf && git reset --hard 1af81c0ca18944b8c9897c3c98dc0a991815b686 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libairspyhf .. && make -j $(nproc) install &&  cd $(BUILDROOT) && rm -rf airspyhf
 
 Perseus:
 	cd $(BUILDROOT) && git clone https://github.com/f4exb/libperseus-sdr.git && cd libperseus-sdr && git checkout fixes && git reset --hard afefa23e3140ac79d845acb68cf0beeb86d09028 && mkdir build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/opt/install/libperseus ..  && make -j $(nproc) && make install &&  cd $(BUILDROOT) && rm -rf libperseus-sdr
