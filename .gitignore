@@ -1,0 +1,13 @@
+SoapySDR/
+libsigmf/
+sdrangel/
+librtlsdr/
+aptdec/
+mbelib/
+dab-cmdline/
+dsdcc/
+SoapyRTLSDR/
+codec2/
+cm256cc/
+sgp4/
+serialDV/
