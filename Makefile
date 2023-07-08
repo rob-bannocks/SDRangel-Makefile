@@ -1,4 +1,5 @@
 nproc=1
+Version=Revovery1
 BUILDROOT=/opt/build
 INSTALLROOT=/opt/install
 USER=robert
