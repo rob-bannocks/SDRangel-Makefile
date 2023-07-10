@@ -14,7 +14,7 @@ gui-all-hardware: common common-all-all SDRangel-gui LimeSDR-tidy
 srv-all-hardware: common common-all-all SDRangel-srv LimeSDR-tidy
 
 setup:
-	sudo mkdir -p /opt/build && sudo chown $(USER). /opt/build && sudo mkdir -p $(INSTALLROOT) && sudo chown $(USER). $(INSTALLROOT) && sudo apt-get install cmake 
+	sudo mkdir -p /opt/build && sudo chown $(USER). /opt/build && sudo mkdir -p $(INSTALLROOT) && sudo chown $(USER). $(INSTALLROOT) && sudo apt-get install cmake -y
 
 APT: aptdec
 	cd $(BUILDROOT)/aptdec && git checkout libaptdec && git submodule update --init --recursive && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/aptdec .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf aptdec
@@ -24,14 +24,18 @@ aptdec:
 	cd $(BUILDROOT) && git clone https://github.com/srcejon/aptdec.git 
 
 CM256cc: cm256cc
-	cd $(BUILDROOT) && cd cm256cc && git reset --hard c0e92b92aca3d1d36c990b642b937c64d363c559 && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/cm256cc .. && make -j $(nproc) && cd $(BUILDROOT) && rm -rf cm256cc
+	cd $(BUILDROOT) && cd cm256cc && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/cm256cc .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf cm256cc
+	#cd $(BUILDROOT) && cd cm256cc && git reset --hard c0e92b92aca3d1d36c990b642b937c64d363c559 && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/cm256cc .. && make -j $(nproc) && cd $(BUILDROOT) && rm -rf cm256cc
 
 #	cd $(BUILDROOT) && cd cm256cc && git reset --hard c0e92b92aca3d1d36c990b642b937c64d363c559 && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/cm256cc .. && make -j $(nproc) install
 
 cm256cc:
 	cd $(BUILDROOT) && git clone https://github.com/f4exb/cm256cc.git
 
-LibDAB: dab-cmdline
+dab-libs:
+	apt-get install libfftw3-3 libfftw3-bin libfftw3-dev libfaad2 libfaad-dev -y
+
+LibDAB: dab-libs dab-cmdline
 	cd $(BUILDROOT) && cd dab-cmdline/library && git checkout msvc && mkdir -p build && cd build && cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/libdab .. && make -j $(nproc) install && cd $(BUILDROOT) && rm -rf dab-cmdline
 
 dab-cmdline:
@@ -70,10 +74,11 @@ libsigmf:
 	cd $(BUILDROOT) && git clone https://github.com/f4exb/libsigmf.git
 
 RTL-SDR: librtlsdr
-	cd $(BUILDROOT) && cd librtlsdr && git reset --hard be1d1206bfb6e6c41f7d91b20b77e20f929fa6a7 && mkdir -p build && cd build && cmake -Wno-dev -DDETACH_KERNEL_DRIVER=ON -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/librtlsdr .. && make -j $(nproc) install&& cd $(BUILDROOT) && rm -rf librtlsdr
+	cd $(BUILDROOT) && cd librtlsdr && mkdir -p build && cd build && cmake -Wno-dev -DDETACH_KERNEL_DRIVER=ON -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/librtlsdr .. && make -j $(nproc) install&& cd $(BUILDROOT) && rm -rf librtlsdr
+	#cd $(BUILDROOT) && cd librtlsdr && git reset --hard be1d1206bfb6e6c41f7d91b20b77e20f929fa6a7 && mkdir -p build && cd build && cmake -Wno-dev -DDETACH_KERNEL_DRIVER=ON -DCMAKE_INSTALL_PREFIX=$(INSTALLROOT)/librtlsdr .. && make -j $(nproc) install&& cd $(BUILDROOT) && rm -rf librtlsdr
 
 librtlsdr:
-	cd $(BUILDROOT) && git clone https://github.com/osmocom/rtl-sdr.git librtlsdr
+	apt-get install libusb-dev libgusb2 -y && cd $(BUILDROOT) && git clone https://github.com/osmocom/rtl-sdr.git librtlsdr
 
 SoapySDR:
 	cd $(BUILDROOT) && git clone https://github.com/pothosware/SoapySDR.git
